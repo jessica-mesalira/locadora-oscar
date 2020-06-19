@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Locadora Oscar</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/style1.css" />
+    <script src="../js/validacoes.js"></script>
+    <link rel="icon" href="../img/popcorn.png" type="imagem-x/icon">
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <div>
+                <img class="titulo" src="../img/popcorn.png" width="80px">
+                <h1 class="titulo"> Locadora <span>Oscar</span></h1>
+            </div>
+            <div class="nav">
+                <ul>
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="./sobre.html">Sobre Mim</a></li>
+                    <li><a href="./contato.html">Contato</a></li>
+                    <li><a href="./login.html">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="formulario">
+        <div class="container">
+            <form>
+                <h1>Cadastro de Usuários</h1> <br>
+
+                <hr>
+
+                <div class="leftbox">
+                    <ul class="form-style-1">
+                        <li>
+                            <label for="nome">Nome <span class="required">*</span></label>
+                            <input type="text" name="nome" class="field-divided" placeholder="Nome" required />
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="middlebox">
+                    <ul class="form-style-1">
+                        <li>
+                            <label for="snome">Sobrenome <span class="required">*</span></label>
+                            <input type="text" name="snome" class="field-divided" placeholder="Sobrenome" required />
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="rightbox">
+                    <ul class="form-style-1">
+                        <li>
+                            <label for="cpf">CPF <span class="required">*</span></label>
+                            <input type="text" name="cpf" class="field-divided" placeholder="CPF" required />
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="leftbox">
+                    <ul class="form-style-1">
+                        <li>
+                            <label for="sexo">Sexo <span class="required">*</span></label>
+                            <input type="radio" id="sexo" value="f" name="sexo" required> Feminino
+                            <input type="radio" id="sexo" value="m" name="sexo" required> Masculino
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="middlebox">
+                    <ul class="form-style-1">
+                        <li>
+                            <label for="dtnasc">Data de Nascimento <span class="required">*</span></label>
+                            <input id="dtnasc" class="field-divided" type="date" placeholder="dd/mm/aaa" required>
+                        </li>
+                    </ul>
+                </div>
+
+                <hr>
+
+                <div class="large-field">
+                    <ul class="form-style-1">
+                        <li>
+                            <label for="email">Email <span class="required">*</span></label>
+                            <input type="email" name="email" class="large-field" placeholder="exemplo@locadoraoscar.com"
+                                required />
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="large-field">
+                    <ul class="form-style-1">
+                        <li>
+                            <label for="senha">Senha <span class="required">*</span></label>
+                            <input type="password" name="senha" class="large-field" placeholder="Senha" required />
+                        </li>
+                    </ul>
+                </div>
+
+                <hr>
+
+                <div class="large-field-cb">
+                    <h3>Escolha os tipos de filmes que gostaria de ver</h3>
+
+                    <ul class="form-style-1">
+                        <li>
+
+                            <input type="checkbox" id="acao_cb" value="acao">
+                            <label for="acao_cb" style="display: inline; margin-right: 20px;">Ação</label>
+
+                            <input type="checkbox" id="animacao_cb" value="animacao">
+                            <label for="animacao_cb" style="display: inline; margin-right: 20px;">Animação</label>
+
+                            <input type="checkbox" id="aventura_cb" value="aventura">
+                            <label for="aventura_cb" style="display: inline; margin-right: 20px;">Aventura</label>
+
+                            <input type="checkbox" id="comedia_cb" value="comedia">
+                            <label for="comedia_cb" style="display: inline; margin-right: 20px;">Comédia</label>
+
+                            <input type="checkbox" id="fantasia_cb" value="fantasia">
+                            <label for="fantasia_cb" style="display: inline; margin-right: 20px;">Fantasia</label>
+
+                            <input type="checkbox" id="ficcao_cb" value="ficcao">
+                            <label for="ficcao_cb" style="display: inline; margin-right: 20px;">Ficção
+                                Científica</label>
+
+                            <input type="checkbox" id="suspense_cb" value="suspense">
+                            <label for="suspense_cb" style="display: inline; margin-right: 20px;">Suspense</label>
+
+                            <input type="checkbox" id="terror_cb" value="terror">
+                            <label for="terror_cb" style="display: inline; margin-right: 20px;">Terror</label>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="btn-enviar">
+                    <button class="btn first">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Redes sociais:</p>
+        <p><a href="https://www.facebook.com/jessymesalira13"> <img src="../img/facebook.png"></a>
+            <a href="https://www.instagram.com/jessymesalira/?hl=pt"> <img src="../img/instagram.png"></a>
+            <a href="https://www.linkedin.com/in/jessica-romera-m13/"> <img src="../img/linkedin.png"></a>
+            <a href="https://twitter.com/jmesalira"> <img src="../img/twitter.png"></a> </p>
+        <p>Copyright © 2020 | Jéssica Mesalira</p>
+    </div>
+</body>
+
+</html>

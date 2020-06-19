@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Locadora Oscar</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/style1.css" />
+    <link rel="icon" href="../img/popcorn.png" type="imagem-x/icon">
+</head>
+
+<body class="fundo">
+    <div class="header">
+        <div class="container">
+            <div>
+                <img class="titulo" src="../img/popcorn.png" width="80px">
+                <h1 class="titulo"> Locadora <span>Oscar</span></h1>
+            </div>
+            <div class="nav">
+                <ul>
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="./sobre.html">Sobre Mim</a></li>
+                    <li><a href="./contato.html">Contato</a></li>
+                    <li><a href="./login.html">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="formulario">
+        <div class="container">
+            <div class="login">
+                <form id="form_login" method="post" onsubmit="return entrar()">
+                    <img src="../img/popcorn.png" width="80px">
+
+                    <ul class="form-style-1">
+                        <li>
+                            <label for="login">Email</label>
+                            <input type="email" name="login" id="login_usu" class="large-field" placeholder="exemplo@locadoraoscar.com" required />
+                        </li>
+                    </ul>
+
+                    <ul class="form-style-1">
+                        <li>
+                            <label for="senha">Senha</label>
+                            <input type="password" name="senha" id="senha_usu" class="large-field" placeholder="Senha" required />
+                        </li>
+                    </ul>
+                    <br>
+                    <div class="btn-enviar">
+                        <button class="btn first" id="btn_entrar">Logar</button>
+                    </div>
+
+                    Não possui Cadastro? <a href="cadastro.html">Cadastre-se!</a>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Redes sociais:</p>
+        <p><a href="https://www.facebook.com/jessymesalira13"> <img src="../img/facebook.png"></a>
+            <a href="https://www.instagram.com/jessymesalira/?hl=pt"> <img src="../img/instagram.png"></a>
+            <a href="https://www.linkedin.com/in/jessica-romera-m13/"> <img src="../img/linkedin.png"></a>
+            <a href="https://twitter.com/jmesalira"> <img src="../img/twitter.png"></a> </p>
+        <p>Copyright © 2020 | Jéssica Mesalira</p>
+    </div>
+</body>
+</html>
+<script>
+
+    function entrar() 
+    {
+        debugger;
+        
+        let formulario = new URLSearchParams(new FormData(form_login));
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            body: formulario
+        }).then(resposta => {
+            
+            if (resposta.ok) 
+            {
+                resposta.json().then(json => {
+
+                    sessionStorage.login_usuario_meuapp = json.email;
+                    sessionStorage.nome_usuario_meuapp = json.nome_usuario;
+                    
+                    window.location.href = 'menu-principal.html';
+                });
+
+            } 
+            else 
+            {
+                alert('Login ou senha inválidos!');
+
+                console.log('Erro de login!');
+
+                response.text().then(texto => {
+                    console.error(texto);
+                    finalizar_aguardar(texto);
+                });
+            }
+        });
+
+        return false;
+    }
+
+
+    function finalizar_aguardar(resposta) {
+        btn_entrar.disabled = false;
+        img_aguarde.style.display= 'none';
+        div_erro.style.display = 'block';
+        div_erro.innerHTML = resposta;
+    }
+
+</script>

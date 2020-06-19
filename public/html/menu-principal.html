@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Locadora Oscar</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/style1.css" />
+  <link rel="stylesheet" href="../css/style2.css" />
+  <link rel="icon" href="../img/popcorn.png" type="imagem-x/icon">
+  <script src="../funcoes.js"></script>
+</head>
+
+<body>
+  <div class="header">
+    <div class="container">
+      <div>
+        <img class="titulo" src="../img/popcorn.png" width="80px">
+        <h1 class="titulo"> Locadora <span>Oscar</span></h1>
+      </div>
+      <div class="nav">
+        <ul>
+          <li>Olá, <b id="b_usuario"></b></li>
+          <li><a href="../menu-principal.html">Menu Principal</a></li>
+          <li><a href="#" onclick="logoff()">Sair</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cards-bg" id="cads-bg">
+  </div>
+
+  <div class="container">
+    <div class="btn-movies-display">
+      <button class="btn-movies first" id="btn_mostrar" onclick="mostrar_mais()"> Mostrar mais</button>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Redes sociais:</p>
+    <p><a href="https://www.facebook.com/jessymesalira13"> <img src="../img/facebook.png"></a>
+        <a href="https://www.instagram.com/jessymesalira/?hl=pt"> <img src="../img/instagram.png"></a>
+        <a href="https://www.linkedin.com/in/jessica-romera-m13/"> <img src="../img/linkedin.png"></a>
+        <a href="https://twitter.com/jmesalira"> <img src="../img/twitter.png"></a> </p>
+    <p>Copyright © 2020 | Jéssica Mesalira</p>
+  </div>
+</body>
+
+</html>
+<script>
+  verificar_autenticacao();
+  
+  const app = document.getElementById('cads-bg');
+  const container = document.createElement('div');
+  container.setAttribute('class', 'container');
+  app.appendChild(container);
+  const getFilme = (pagina) => {
+    
+    return fetch(`https://api.themoviedb.org/3/search/movie?api_key=5cc3cc229e20e5beb08586485977d461&language=pt-BR&query=e&page=${pagina}&include_adult=false`)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        data.results.forEach(movie => {
+          const flipCard = document.createElement('div');
+          flipCard.setAttribute('class', 'flip-card');
+
+          const flipInner = document.createElement('div');
+          flipInner.setAttribute('class', 'flip-card-inner');
+
+          const flipFront = document.createElement('div');
+          flipFront.setAttribute('class', 'flip-card-front');
+
+          const flipBack = document.createElement('div');
+          flipBack.setAttribute('class', 'flip-card-back');
+
+          const photo = document.createElement('img');
+          photo.setAttribute(`src`,`https://image.tmdb.org/t/p/w500${movie.poster_path}`);
+
+          const h1 = document.createElement('h1');
+          h1.textContent = movie.title;
+
+          const p = document.createElement('p');
+          movie.overview = movie.overview.substring(0, 200);
+          p.textContent = `${movie.overview}...`;
+
+          const nota = document.createElement('p');
+          nota.textContent = `${movie.vote_average}`;
+
+          container.appendChild(flipCard);
+          flipCard.appendChild(flipInner);
+          flipInner.appendChild(flipFront);
+          flipFront.appendChild(photo);
+          flipInner.appendChild(flipBack);
+          flipBack.appendChild(h1);
+          flipBack.appendChild(p);
+          flipBack.appendChild(nota);
+        })
+      })
+  }
+
+  let pagina = 1;
+  getFilme(pagina);
+
+  function mostrar_mais()
+  {
+    pagina += 1;
+    getFilme(pagina);
+  }
+</script>
